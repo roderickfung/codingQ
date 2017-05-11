@@ -5,8 +5,8 @@ arr = [1,3,4,5,3,2,3,4,4,6,6,6,6,6,4,2,2,2,1,3];
 arr2 = [];
 
 let getCastles = ( arr ) => {
-  let nArr = [];
-  let castles = [];
+  let nArr = []; // represents the land that has been shrunk
+  let castles = []; // represents the land that you should build a castle on
 
   if(arr.length != null) {
     // 1st for loop used to shrink land
@@ -16,8 +16,10 @@ let getCastles = ( arr ) => {
     // iterate through shrunken land to find peaks and valleys
     for(i=0; i< nArr.length; i++){
       if( i === 0 ) {
+        // this builds a castle at the start of the array so long array is not-empty.
         castles.push(nArr[0])
       } else {
+        // this iterates through the rest of the land to find peaks and valleys
         nArr[i] > nArr[i+1] && nArr[i] > nArr[i-1] ? castles.push(nArr[i]) : nArr[i] < nArr[i+1] && nArr[i] < nArr[i-1] ? castles.push(nArr[i]) : false;
       }
     }
